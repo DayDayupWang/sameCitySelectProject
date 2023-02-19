@@ -25,7 +25,7 @@ import java.util.UUID;
 @Slf4j
 public class CommonController {
 
-    @Value("${reggie.path}")
+    @Value("${SameCitySelect.path}")
     private String basePath;//用reggie.path注入到basePath中管理存储文件的地址
 
     @PostMapping("/upload")

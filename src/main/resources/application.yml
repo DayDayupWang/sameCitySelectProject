@@ -10,7 +10,7 @@ spring:
       time-to-live: 1800000 #设置过期时间
   application:
     #应用名称可选
-    name: reggie_take_out
+    name: sameCity_take_out
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,5 +26,5 @@ mybatis-plus:
     db-config:
       id-type: ASSIGN_ID
 
-reggie:
+SameCitySelect:
   path: D:\imag\
