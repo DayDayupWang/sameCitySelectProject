@@ -11,12 +11,45 @@ spring:
   application:
     #应用名称可选
     name: sameCity_take_out
-  datasource:
-    druid:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/reggie?characterEncoding=utf-8&useSSL=false
-      username: root
-      password: wang9872008
+
+  shardingsphere:
+      datasource:
+        #自定义数据源名字，名字随便取，注意是下面masterslave配置主从数据源名字
+        names:
+          master,slave
+        ## 主数据源
+        master:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.80.128:3339/sameCity?characterEncoding=utf-8
+          username: root
+          password: 123456
+        ## 从数据源
+        slave:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.80.128:3340/sameCity?characterEncoding=utf-8
+          username: root
+          password: 123456
+      #配置主从信息
+      masterslave:
+        ## 从库的负载均衡算法类型，round_robin意思是几个从库轮流查询
+        load-balance-algorithm-type: round_robin
+        ## 最终的数据源名称
+        name: dataSource
+        ## 主库数据源名称
+        master-data-source-name: master
+        ## 从库数据源名称列表，多个逗号分隔
+        slave-data-source-names: slave
+      props:
+        sql:
+          show: true #开启SQL显示，默认false
+      #允许bean定义覆盖配置项
+  main:
+    allow-bean-definition-overriding: true
+
+
+
 mybatis-plus:
   configuration:
     #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
