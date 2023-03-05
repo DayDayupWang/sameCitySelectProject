@@ -92,7 +92,7 @@
 
 ![image-20230305102114608](https://typingcat-picbed.oss-cn-hangzhou.aliyuncs.com/img/202303051021750.png)
 
-### 2.10 Linux部署项目
+### 3.10 Linux部署项目
 
 ![image-20230305105116840](https://typingcat-picbed.oss-cn-hangzhou.aliyuncs.com/img/202303051051093.png)
 
